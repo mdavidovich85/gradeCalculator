@@ -110,13 +110,7 @@ public class GradeCalculator {
             }
         }
 
-        double maxGrade = allGrades[0];
-
-        for (double grade : allGrades) {
-            if (grade > maxGrade) {
-                maxGrade = grade;
-            }
-        }
+        double maxGrade = CheckMaxGrade(allGrades);
 
         System.out.println("Highest grade: " + maxGrade);
         System.out.println("Lowest grade: " + minGrade);
