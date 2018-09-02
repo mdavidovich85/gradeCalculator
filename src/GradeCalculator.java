@@ -30,7 +30,6 @@ public class GradeCalculator {
         double averageGrade = 0;
         double classAverage = 0;
         String studentName;
-        String letterGrade = "";
 
         System.out.println("Welcome ot the Grade Calculator!");
 
@@ -81,20 +80,15 @@ public class GradeCalculator {
             allGradeIndex++;
             classAverage = classAverage + averageGrade;
 
-            if (averageGrade >= 90) {
-                letterGrade = "A.  Four Stars ****";
-            } else if (averageGrade < 90 && averageGrade >= 80) {
-                letterGrade = "B.  Three Stars ***";
-            } else if (averageGrade < 80 && averageGrade >= 70) {
-                letterGrade = "C.  Two Stars **";
-            } else if (averageGrade < 70 && averageGrade >= 60) {
-                letterGrade = "D.  One Star *";
-            } else if (averageGrade < 60) {
-                letterGrade = "F.  No Stars";
-            }
-
             System.out.println(studentName + "'s average grade is " + averageGrade);
-            System.out.println(letterGrade);
+            System.out.println(CheckLetterGrade.CheckLetterGrade(averageGrade));
+
+            double maxGrade = CheckMaxGrade.CheckMaxGrade(studentGrades);
+            System.out.println(studentName + "' highest grade is: " + maxGrade);
+
+            double minGrade = CheckMinGrade.CheckMinGrade(studentGrades);
+            System.out.println(studentName + "' lowest grade is: " + minGrade);
+
             averageGrade = 0;
             //System.out.println(Arrays.toString(studentGrades));
         }
@@ -102,18 +96,13 @@ public class GradeCalculator {
         System.out.println("Class average: " + classAverage/numStudents);
         //System.out.println(Arrays.toString(allGrades));
 
-        double minGrade = allGrades[0];
-
-        for (double grade : allGrades) {
-            if (grade < minGrade) {
-                minGrade = grade;
-            }
-        }
-
-        double maxGrade = CheckMaxGrade(allGrades);
-
+        double maxGrade = CheckMaxGrade.CheckMaxGrade(allGrades);
         System.out.println("Highest grade: " + maxGrade);
+        //System.out.println(Arrays.toString(allGrades));
+
+        double minGrade = CheckMinGrade.CheckMinGrade(allGrades);
         System.out.println("Lowest grade: " + minGrade);
+        //System.out.println(Arrays.toString(allGrades));
 
         System.out.print("Thank you for using Grade Calculator!");
 
